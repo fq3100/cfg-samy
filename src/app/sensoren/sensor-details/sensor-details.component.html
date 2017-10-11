@@ -1,0 +1,33 @@
+<div *ngIf="sensor" class="row">
+  <div class="col-md-12">
+    <h2 *ngIf="sensor._id">Sensor Details</h2>
+    <h2 *ngIf="!sensor._id">Neuer Sensor</h2>
+  </div>
+</div>
+<div *ngIf="sensor" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="sensor-betrieb">Betrieb</label>
+      <input class="form-control" name="sensor-betrieb" [(ngModel)]="sensor.betrieb" placeholder="Betriebsbezeichnung"/>
+    </div>
+    <div class="form-group">
+      <label for="sensor-standort">Standort</label>
+      <input class="form-control" name="sensor-standort" [(ngModel)]="sensor.standort" placeholder="Hamburg"/>
+    </div>
+    <div class="form-group">
+      <label for="sensor-kuehlart">Kuehlart</label>
+      <input class="form-control" name="sensor-kuehlart" [(ngModel)]="sensor.kuehlart" placeholder="Tief-Kuehlung"/>
+    </div>
+    <div class="form-group">
+      <label for="sensor-messungen-datum">Datum</label>
+      <input class="form-control" name="sensor-messungen-datum" [(ngModel)]="sensor.messungen.datum" placeholder="01.01.1970"/>
+    </div>
+    <div class="form-group">
+      <label for="sensor-messungen-wert">Wert</label>
+      <input class="form-control" name="sensor-messungen-wert" [(ngModel)]="sensor.messungen.wert" placeholder="-11"/>
+    </div>
+    <button class="btn btn-primary" *ngIf="!sensor._id" (click)="createSensor(sensor)">Create</button>
+    <button class="btn btn-info" *ngIf="sensor._id" (click)="updateSensor(sensor)">Update</button>
+    <button class="btn btn-danger" *ngIf="sensor._id" (click)="deleteSensor(sensor._id)">Delete</button>
+  </form>
+</div>
